@@ -64,7 +64,7 @@ Matcher.Game.prototype = {
 
     // generate the points display
     genPointsText: function() {
-        text = this.game.add.text(WIDTH - 120, 10, 'Points: ' + points, { font: "2em Arial", fill: "#000000", align: "left" });
+        text = this.game.add.text(this.game.width - 120, 10, 'Points: ' + points, { font: "2em Arial", fill: "#000000", align: "left" });
     },
 
     // return to the main menu to select a different game
@@ -90,7 +90,7 @@ Matcher.Game.prototype = {
     displayOptions: function() {
         var xLoc, yLoc;
         var pos = 0;
-        var yOffset = (HEIGHT - PICKER_OFFSET) / 3;
+        var yOffset = (this.game.height - PICKER_OFFSET) / 3;
 
         // figure out which element will be the 'winner'
         winner = optionList[Math.floor(Math.random() * optionList.length)];
@@ -103,7 +103,7 @@ Matcher.Game.prototype = {
             yLoc = 35 + i * (yOffset) - (QUAD_HEIGHT * 0.75);
 
             for (var j = 3; j >= 1; j--) {
-                xLoc = j * (WIDTH / 3) - (QUAD_WIDTH * 0.6);
+                xLoc = j * (this.game.width / 3) - (QUAD_WIDTH * 0.6);
                 text = this.game.add.text(xLoc, yLoc, optionList[pos], { font: "6em Arial", fill: "#000000", align: "left" });
                 text.resolution = 1;
                 text.inputEnabled = true;
@@ -139,7 +139,7 @@ Matcher.Game.prototype = {
     // generate the text indicating to the user what to do
     genPickText: function() {
         var textContent = "Select all the " + winner + "s";
-        var text = this.game.add.text((WIDTH / 2), (HEIGHT - (PICKER_OFFSET / 2)), textContent, { font: "4em Arial", fill: "#000000", align: "left" });
+        var text = this.game.add.text((this.game.width / 2), (this.game.height - (PICKER_OFFSET / 2)), textContent, { font: "4em Arial", fill: "#000000", align: "left" });
         text.addColor("#0a6880", 15);
         text.addColor("#000000", textContent.length - 1);
         text.resolution = 1;
